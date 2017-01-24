@@ -12,5 +12,9 @@ set(SOURCE_FILES
         Main/Catalog/headers/MyDB_Table.h
         Main/Catalog/source/MyDB_Table.cc
         Main/Qunit/headers/QUnit.h)
-
+include_directories(
+        Main/BufferMgr/headers
+        Main/Catalog/headers
+        Main/Qunit/headers
+        )
 add_executable(A1 ${SOURCE_FILES})

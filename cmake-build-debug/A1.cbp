@@ -8,42 +8,45 @@
 		<Option virtualFolders="CMake Files\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="/Users/liufang/Documents/Courses/comp530/A1/cmake-build-debug"/>
+				<Option working_dir="/Users/liufang/Documents/A1/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/Users/liufang/Documents/Courses/comp530/A1/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/liufang/Documents/Courses/comp530/A1/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/Users/liufang/Documents/Courses/comp530/A1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/liufang/Documents/Courses/comp530/A1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/liufang/Documents/A1/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/liufang/Documents/A1/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/liufang/Documents/A1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/liufang/Documents/A1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="edit_cache">
-				<Option working_dir="/Users/liufang/Documents/Courses/comp530/A1/cmake-build-debug"/>
+				<Option working_dir="/Users/liufang/Documents/A1/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/Users/liufang/Documents/Courses/comp530/A1/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/liufang/Documents/Courses/comp530/A1/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/Users/liufang/Documents/Courses/comp530/A1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/liufang/Documents/Courses/comp530/A1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/liufang/Documents/A1/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/liufang/Documents/A1/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/liufang/Documents/A1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/liufang/Documents/A1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
-				<Option working_dir="/Users/liufang/Documents/Courses/comp530/A1/cmake-build-debug"/>
+				<Option working_dir="/Users/liufang/Documents/A1/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/Users/liufang/Documents/Courses/comp530/A1/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/liufang/Documents/Courses/comp530/A1/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/Users/liufang/Documents/Courses/comp530/A1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/liufang/Documents/Courses/comp530/A1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/liufang/Documents/A1/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/liufang/Documents/A1/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/liufang/Documents/A1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/liufang/Documents/A1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="A1">
-				<Option output="/Users/liufang/Documents/Courses/comp530/A1/cmake-build-debug/A1" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/Users/liufang/Documents/Courses/comp530/A1/cmake-build-debug"/>
+				<Option output="/Users/liufang/Documents/A1/cmake-build-debug/A1" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/liufang/Documents/A1/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
+					<Add directory="/Users/liufang/Documents/A1/Main/BufferMgr/headers"/>
+					<Add directory="/Users/liufang/Documents/A1/Main/Catalog/headers"/>
+					<Add directory="/Users/liufang/Documents/A1/Main/Qunit/headers"/>
 					<Add directory="/usr/local/include"/>
 					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/8.0.0/include"/>
 					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
@@ -53,19 +56,22 @@
 					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/Users/liufang/Documents/Courses/comp530/A1/cmake-build-debug/Makefile&quot;  VERBOSE=1 A1"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/liufang/Documents/Courses/comp530/A1/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/Users/liufang/Documents/Courses/comp530/A1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/liufang/Documents/Courses/comp530/A1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/liufang/Documents/A1/cmake-build-debug/Makefile&quot;  VERBOSE=1 A1"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/liufang/Documents/A1/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/liufang/Documents/A1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/liufang/Documents/A1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="A1/fast">
-				<Option output="/Users/liufang/Documents/Courses/comp530/A1/cmake-build-debug/A1" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/Users/liufang/Documents/Courses/comp530/A1/cmake-build-debug"/>
+				<Option output="/Users/liufang/Documents/A1/cmake-build-debug/A1" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/liufang/Documents/A1/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
+					<Add directory="/Users/liufang/Documents/A1/Main/BufferMgr/headers"/>
+					<Add directory="/Users/liufang/Documents/A1/Main/Catalog/headers"/>
+					<Add directory="/Users/liufang/Documents/A1/Main/Qunit/headers"/>
 					<Add directory="/usr/local/include"/>
 					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/8.0.0/include"/>
 					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
@@ -75,38 +81,38 @@
 					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/Users/liufang/Documents/Courses/comp530/A1/cmake-build-debug/Makefile&quot;  VERBOSE=1 A1/fast"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/liufang/Documents/Courses/comp530/A1/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/Users/liufang/Documents/Courses/comp530/A1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/liufang/Documents/Courses/comp530/A1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/liufang/Documents/A1/cmake-build-debug/Makefile&quot;  VERBOSE=1 A1/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/liufang/Documents/A1/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/liufang/Documents/A1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/liufang/Documents/A1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/Users/liufang/Documents/Courses/comp530/A1/Main/BufferMgr/headers/MyDB_BufferManager.h">
+		<Unit filename="/Users/liufang/Documents/A1/Main/BufferMgr/headers/MyDB_BufferManager.h">
 			<Option target="A1"/>
 		</Unit>
-		<Unit filename="/Users/liufang/Documents/Courses/comp530/A1/Main/BufferMgr/headers/MyDB_PageHandle.h">
+		<Unit filename="/Users/liufang/Documents/A1/Main/BufferMgr/headers/MyDB_PageHandle.h">
 			<Option target="A1"/>
 		</Unit>
-		<Unit filename="/Users/liufang/Documents/Courses/comp530/A1/Main/BufferMgr/source/MyDB_BufferManager.cc">
+		<Unit filename="/Users/liufang/Documents/A1/Main/BufferMgr/source/MyDB_BufferManager.cc">
 			<Option target="A1"/>
 		</Unit>
-		<Unit filename="/Users/liufang/Documents/Courses/comp530/A1/Main/BufferMgr/source/MyDB_PageHandle.cc">
+		<Unit filename="/Users/liufang/Documents/A1/Main/BufferMgr/source/MyDB_PageHandle.cc">
 			<Option target="A1"/>
 		</Unit>
-		<Unit filename="/Users/liufang/Documents/Courses/comp530/A1/Main/BufferTest/source/BufferQUnit.cc">
+		<Unit filename="/Users/liufang/Documents/A1/Main/BufferTest/source/BufferQUnit.cc">
 			<Option target="A1"/>
 		</Unit>
-		<Unit filename="/Users/liufang/Documents/Courses/comp530/A1/Main/Catalog/headers/MyDB_Table.h">
+		<Unit filename="/Users/liufang/Documents/A1/Main/Catalog/headers/MyDB_Table.h">
 			<Option target="A1"/>
 		</Unit>
-		<Unit filename="/Users/liufang/Documents/Courses/comp530/A1/Main/Catalog/source/MyDB_Table.cc">
+		<Unit filename="/Users/liufang/Documents/A1/Main/Catalog/source/MyDB_Table.cc">
 			<Option target="A1"/>
 		</Unit>
-		<Unit filename="/Users/liufang/Documents/Courses/comp530/A1/Main/Qunit/headers/QUnit.h">
+		<Unit filename="/Users/liufang/Documents/A1/Main/Qunit/headers/QUnit.h">
 			<Option target="A1"/>
 		</Unit>
-		<Unit filename="/Users/liufang/Documents/Courses/comp530/A1/CMakeLists.txt">
+		<Unit filename="/Users/liufang/Documents/A1/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
 	</Project>

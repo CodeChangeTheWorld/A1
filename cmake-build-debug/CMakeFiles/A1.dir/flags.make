@@ -6,5 +6,5 @@ CXX_FLAGS = -g   -std=gnu++11
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = 
+CXX_INCLUDES = -I/Users/liufang/Documents/A1/Main/BufferMgr/headers -I/Users/liufang/Documents/A1/Main/Catalog/headers -I/Users/liufang/Documents/A1/Main/Qunit/headers 
 
