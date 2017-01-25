@@ -16,9 +16,9 @@ public:
 
     ~MyDB_table_page();
 
-    MyDB_TablePtr getTablePtr();
+    const MyDB_TablePtr& getTablePtr() const;
 
-    long getpgid();
+    const long getpgid() const;
 
 private:
 
@@ -33,7 +33,7 @@ class MyHash
 {
 public:
 
-    size_t operator()(MyDB_table_page& ptr)
+    size_t operator()(const MyDB_table_page& ptr) const
     {
         hash<string> sh;
         return sh(ptr.getTablePtr()->getName() + "/"
@@ -45,7 +45,7 @@ public:
 class MyEqualTo {
 public:
 
-    bool operator()( MyDB_table_page& p1, MyDB_table_page& p2)  const
+    bool operator()(const MyDB_table_page& p1,const MyDB_table_page& p2)  const
     {
         return p1.getTablePtr()->getName() + "/"
                + p1.getTablePtr()->getStorageLoc() + "/"

@@ -114,11 +114,11 @@ MyDB_table_page::~MyDB_table_page() {
 }
 
 
-long MyDB_table_page::getpgid() {
+const long MyDB_table_page::getpgid() const{
     return this->pgid;
 }
 
-MyDB_TablePtr MyDB_table_page::getTablePtr(){
+const MyDB_TablePtr& MyDB_table_page::getTablePtr() const{
     return this->tbptr;
 }
 
