@@ -91,10 +91,16 @@
 		<Unit filename="/Users/liufang/Documents/A1/Main/BufferMgr/headers/MyDB_BufferManager.h">
 			<Option target="A1"/>
 		</Unit>
+		<Unit filename="/Users/liufang/Documents/A1/Main/BufferMgr/headers/MyDB_Page.h">
+			<Option target="A1"/>
+		</Unit>
 		<Unit filename="/Users/liufang/Documents/A1/Main/BufferMgr/headers/MyDB_PageHandle.h">
 			<Option target="A1"/>
 		</Unit>
 		<Unit filename="/Users/liufang/Documents/A1/Main/BufferMgr/source/MyDB_BufferManager.cc">
+			<Option target="A1"/>
+		</Unit>
+		<Unit filename="/Users/liufang/Documents/A1/Main/BufferMgr/source/MyDB_Page.cc">
 			<Option target="A1"/>
 		</Unit>
 		<Unit filename="/Users/liufang/Documents/A1/Main/BufferMgr/source/MyDB_PageHandle.cc">

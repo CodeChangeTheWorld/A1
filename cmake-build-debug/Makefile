@@ -150,6 +150,33 @@ Main/BufferMgr/source/MyDB_BufferManager.cc.s:
 	$(MAKE) -f CMakeFiles/A1.dir/build.make CMakeFiles/A1.dir/Main/BufferMgr/source/MyDB_BufferManager.cc.s
 .PHONY : Main/BufferMgr/source/MyDB_BufferManager.cc.s
 
+Main/BufferMgr/source/MyDB_Page.o: Main/BufferMgr/source/MyDB_Page.cc.o
+
+.PHONY : Main/BufferMgr/source/MyDB_Page.o
+
+# target to build an object file
+Main/BufferMgr/source/MyDB_Page.cc.o:
+	$(MAKE) -f CMakeFiles/A1.dir/build.make CMakeFiles/A1.dir/Main/BufferMgr/source/MyDB_Page.cc.o
+.PHONY : Main/BufferMgr/source/MyDB_Page.cc.o
+
+Main/BufferMgr/source/MyDB_Page.i: Main/BufferMgr/source/MyDB_Page.cc.i
+
+.PHONY : Main/BufferMgr/source/MyDB_Page.i
+
+# target to preprocess a source file
+Main/BufferMgr/source/MyDB_Page.cc.i:
+	$(MAKE) -f CMakeFiles/A1.dir/build.make CMakeFiles/A1.dir/Main/BufferMgr/source/MyDB_Page.cc.i
+.PHONY : Main/BufferMgr/source/MyDB_Page.cc.i
+
+Main/BufferMgr/source/MyDB_Page.s: Main/BufferMgr/source/MyDB_Page.cc.s
+
+.PHONY : Main/BufferMgr/source/MyDB_Page.s
+
+# target to generate assembly for a file
+Main/BufferMgr/source/MyDB_Page.cc.s:
+	$(MAKE) -f CMakeFiles/A1.dir/build.make CMakeFiles/A1.dir/Main/BufferMgr/source/MyDB_Page.cc.s
+.PHONY : Main/BufferMgr/source/MyDB_Page.cc.s
+
 Main/BufferMgr/source/MyDB_PageHandle.o: Main/BufferMgr/source/MyDB_PageHandle.cc.o
 
 .PHONY : Main/BufferMgr/source/MyDB_PageHandle.o
@@ -243,6 +270,9 @@ help:
 	@echo "... Main/BufferMgr/source/MyDB_BufferManager.o"
 	@echo "... Main/BufferMgr/source/MyDB_BufferManager.i"
 	@echo "... Main/BufferMgr/source/MyDB_BufferManager.s"
+	@echo "... Main/BufferMgr/source/MyDB_Page.o"
+	@echo "... Main/BufferMgr/source/MyDB_Page.i"
+	@echo "... Main/BufferMgr/source/MyDB_Page.s"
 	@echo "... Main/BufferMgr/source/MyDB_PageHandle.o"
 	@echo "... Main/BufferMgr/source/MyDB_PageHandle.i"
 	@echo "... Main/BufferMgr/source/MyDB_PageHandle.s"
