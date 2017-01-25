@@ -6,6 +6,9 @@ CMakeFiles/A1.dir/Main/BufferMgr/source/MyDB_BufferManager.cc.o: ../Main/BufferM
 CMakeFiles/A1.dir/Main/BufferMgr/source/MyDB_BufferManager.cc.o: ../Main/Catalog/headers/MyDB_Table.h
 CMakeFiles/A1.dir/Main/BufferMgr/source/MyDB_BufferManager.cc.o: ../Main/BufferMgr/source/MyDB_BufferManager.cc
 
+CMakeFiles/A1.dir/Main/BufferMgr/source/MyDB_Page.cc.o: ../Main/BufferMgr/headers/MyDB_Page.h
+CMakeFiles/A1.dir/Main/BufferMgr/source/MyDB_Page.cc.o: ../Main/BufferMgr/source/MyDB_Page.cc
+
 CMakeFiles/A1.dir/Main/BufferMgr/source/MyDB_PageHandle.cc.o: ../Main/BufferMgr/headers/MyDB_PageHandle.h
 CMakeFiles/A1.dir/Main/BufferMgr/source/MyDB_PageHandle.cc.o: ../Main/BufferMgr/source/MyDB_PageHandle.cc
 

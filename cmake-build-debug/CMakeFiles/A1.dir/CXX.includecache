@@ -12,6 +12,8 @@ MyDB_PageHandle.h
 MyDB_Table.h
 ../Main/BufferMgr/headers/MyDB_Table.h
 
+../Main/BufferMgr/headers/MyDB_Page.h
+
 ../Main/BufferMgr/headers/MyDB_PageHandle.h
 memory
 -
@@ -33,6 +35,10 @@ MyDB_BufferManager.h
 /Users/liufang/Documents/A1/Main/BufferMgr/source/MyDB_BufferManager.h
 string
 -
+
+/Users/liufang/Documents/A1/Main/BufferMgr/source/MyDB_Page.cc
+MyDB_Page.h
+/Users/liufang/Documents/A1/Main/BufferMgr/source/MyDB_Page.h
 
 /Users/liufang/Documents/A1/Main/BufferMgr/source/MyDB_PageHandle.cc
 memory

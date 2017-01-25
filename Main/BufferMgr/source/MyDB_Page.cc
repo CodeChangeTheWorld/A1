@@ -5,10 +5,6 @@
 #include "MyDB_Page.h"
 
 
-void *MyDB_Page::MyDB_Page() {
-
-}
-
 char* MyDB_Page::getbytes(){
     return bytes;
 }
