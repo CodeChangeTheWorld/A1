@@ -6,15 +6,21 @@
 #define A1_MYDB_PAGE_H
 
 
+#include "MyDB_BufferManager.h"
+
 class MyDB_Page{
     long lru_counter;
     bool dirty;
     bool pin;
     long offset;
+    MyDB_BufferManager* bfmanager;
+    MyDB_TablePtr ptr;
+    long pageid;
 
 public:
 
     MyDB_Page();
+    MyDB_Page(MyDB_BufferManager* bfmanager, MyDB_TablePtr ptr, long id);
     long getLRU();
     void setLRU(long lru);
     long getOffset();

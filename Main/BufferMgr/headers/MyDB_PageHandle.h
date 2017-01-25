@@ -13,7 +13,6 @@ typedef shared_ptr <MyDB_PageHandleBase> MyDB_PageHandle;
 class MyDB_PageHandleBase {
 
 public:
-
 	// THESE METHODS MUST BE IMPLEMENTED WITHOUT CHANGING THE DEFINITION
 
 	// access the raw bytes in this page... if the page is not currently
@@ -37,6 +36,9 @@ public:
 	// FEEL FREE TO ADD ADDITIONAL PUBLIC METHODS
 
     void unpin();
+	MyDB_PageHandleBase();
+	MyDB_PageHandleBase(MyDB_Page page);
+
 
 private:
 

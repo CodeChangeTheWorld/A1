@@ -8,6 +8,15 @@
 MyDB_Page::MyDB_Page() {
 
 }
+MyDB_Page::MyDB_Page(MyDB_BufferManager* manager, MyDB_TablePtr ptr,long id){
+    this->bfmanager= bfmanager;
+    this->ptr = ptr;
+    this->pageid = id;
+    pin = false;
+    dirty = false;
+    lru_counter = 0;
+    offset = 0;
+}
 long MyDB_Page::getLRU() {
     return this->lru_counter;
 }
