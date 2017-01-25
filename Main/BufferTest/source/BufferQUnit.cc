@@ -41,6 +41,16 @@ int main () {
 	// UNIT TEST 1: A BIG ONE!!
 	{
 
+        int i = 10;
+        int * j = &i;
+        std::cout<< *j << endl;
+        i = 20;
+        std::cout<< *j << endl;
+        i = 9;
+        *j = 22;
+        std::cout<< i << endl;
+
+
 		// create a buffer manager 
 		MyDB_BufferManager myMgr (64, 16, "tempDSFSD");
 		MyDB_TablePtr table1 = make_shared <MyDB_Table> ("tempTable", "foobar");

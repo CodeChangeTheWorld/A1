@@ -52,6 +52,9 @@ public:
 private:
 
 	// YOUR STUFF HERE
+	size_t pageSize, numPages;
+	string tempFile;
+
 
 };
 
