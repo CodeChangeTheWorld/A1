@@ -57,6 +57,7 @@ MyDB_PageHandle MyDB_BufferManager :: getPinnedPage () {
 }
 
 void MyDB_BufferManager :: unpin (MyDB_PageHandle unpinMe) {
+    unpinMe.get()->unpin();
 }
 
 MyDB_BufferManager :: MyDB_BufferManager (size_t pgSize, size_t pgNum, string tmpFile) {

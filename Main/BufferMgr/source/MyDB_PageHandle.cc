@@ -15,5 +15,8 @@ void MyDB_PageHandleBase :: wroteBytes () {
 MyDB_PageHandleBase :: ~MyDB_PageHandleBase () {
 }
 
+void MyDB_PageHandleBase::unpin() {
+	this->pgobject.setpin(false);
+}
 #endif
 

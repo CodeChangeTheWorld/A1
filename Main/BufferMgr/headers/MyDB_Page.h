@@ -21,6 +21,8 @@ public:
     void setOffset(long offset);
     bool getDirty();
     void setDirty(bool dirty);
+    void setpin(bool pinvalue);
+    bool getpin();
     ~MyDB_Page();
 };
 
