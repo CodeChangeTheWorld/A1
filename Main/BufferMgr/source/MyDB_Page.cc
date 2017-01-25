@@ -4,13 +4,36 @@
 
 #include "MyDB_Page.h"
 
+char* bytes;
 
-char* MyDB_Page::getbytes(){
-    return bytes;
+MyDB_Page::MyDB_Page();
+long getLRU();
+void setLRU(long lru);
+long getOffset();
+void setOffset(long offset);
+bool getDirty();
+void setDirty(bool dirty);
+
+MyDB_Page::MyDB_Page() {
+
 }
-void setbytes(char* bytes){
+long MyDB_Page::getLRU() {
 
 }
+void MyDB_Page::setLRU(long lru) {
 
-MyDB_Page :: ~MyDB_Page() {
+}
+long MyDB_Page::getOffset() {
+
+}
+void MyDB_Page::setOffset(long offset) {
+
+}
+bool MyDB_Page::getDirty() {
+
+}
+void MyDB_Page::setDirty(bool dirty) {
+
+}
+MyDB_Page::~MyDB_Page() {
 }
