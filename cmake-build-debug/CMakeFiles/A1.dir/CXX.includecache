@@ -23,6 +23,8 @@ MyDB_Page.h
 ../Main/BufferMgr/headers/MyDB_PageHandle.h
 memory
 -
+MyDB_Page.h
+../Main/BufferMgr/headers/MyDB_Page.h
 
 ../Main/Catalog/headers/MyDB_Table.h
 memory
@@ -36,9 +38,9 @@ sstream
 string
 -
 
-/Users/cj/CLionProjects/A1/Main/BufferMgr/source/MyDB_BufferManager.cc
+/Users/liufang/Documents/A1/Main/BufferMgr/source/MyDB_BufferManager.cc
 MyDB_BufferManager.h
-/Users/cj/CLionProjects/A1/Main/BufferMgr/source/MyDB_BufferManager.h
+/Users/liufang/Documents/A1/Main/BufferMgr/source/MyDB_BufferManager.h
 string
 -
 stdlib.h
@@ -60,25 +62,25 @@ MyDB_Page.h
 map
 -
 
-/Users/cj/CLionProjects/A1/Main/BufferMgr/source/MyDB_Page.cc
+/Users/liufang/Documents/A1/Main/BufferMgr/source/MyDB_Page.cc
 MyDB_Page.h
-/Users/cj/CLionProjects/A1/Main/BufferMgr/source/MyDB_Page.h
+/Users/liufang/Documents/A1/Main/BufferMgr/source/MyDB_Page.h
 
-/Users/cj/CLionProjects/A1/Main/BufferMgr/source/MyDB_PageHandle.cc
+/Users/liufang/Documents/A1/Main/BufferMgr/source/MyDB_PageHandle.cc
 memory
 -
 MyDB_PageHandle.h
-/Users/cj/CLionProjects/A1/Main/BufferMgr/source/MyDB_PageHandle.h
+/Users/liufang/Documents/A1/Main/BufferMgr/source/MyDB_PageHandle.h
 
-/Users/cj/CLionProjects/A1/Main/BufferTest/source/BufferQUnit.cc
+/Users/liufang/Documents/A1/Main/BufferTest/source/BufferQUnit.cc
 MyDB_BufferManager.h
-/Users/cj/CLionProjects/A1/Main/BufferTest/source/MyDB_BufferManager.h
+/Users/liufang/Documents/A1/Main/BufferTest/source/MyDB_BufferManager.h
 MyDB_PageHandle.h
-/Users/cj/CLionProjects/A1/Main/BufferTest/source/MyDB_PageHandle.h
+/Users/liufang/Documents/A1/Main/BufferTest/source/MyDB_PageHandle.h
 MyDB_Table.h
-/Users/cj/CLionProjects/A1/Main/BufferTest/source/MyDB_Table.h
+/Users/liufang/Documents/A1/Main/BufferTest/source/MyDB_Table.h
 QUnit.h
-/Users/cj/CLionProjects/A1/Main/BufferTest/source/QUnit.h
+/Users/liufang/Documents/A1/Main/BufferTest/source/QUnit.h
 iostream
 -
 unistd.h
@@ -86,7 +88,7 @@ unistd.h
 vector
 -
 
-/Users/cj/CLionProjects/A1/Main/Catalog/source/MyDB_Table.cc
+/Users/liufang/Documents/A1/Main/Catalog/source/MyDB_Table.cc
 MyDB_Table.h
-/Users/cj/CLionProjects/A1/Main/Catalog/source/MyDB_Table.h
+/Users/liufang/Documents/A1/Main/Catalog/source/MyDB_Table.h
 

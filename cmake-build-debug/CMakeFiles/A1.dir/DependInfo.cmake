@@ -4,11 +4,11 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/Users/cj/CLionProjects/A1/Main/BufferMgr/source/MyDB_BufferManager.cc" "/Users/cj/CLionProjects/A1/cmake-build-debug/CMakeFiles/A1.dir/Main/BufferMgr/source/MyDB_BufferManager.cc.o"
-  "/Users/cj/CLionProjects/A1/Main/BufferMgr/source/MyDB_Page.cc" "/Users/cj/CLionProjects/A1/cmake-build-debug/CMakeFiles/A1.dir/Main/BufferMgr/source/MyDB_Page.cc.o"
-  "/Users/cj/CLionProjects/A1/Main/BufferMgr/source/MyDB_PageHandle.cc" "/Users/cj/CLionProjects/A1/cmake-build-debug/CMakeFiles/A1.dir/Main/BufferMgr/source/MyDB_PageHandle.cc.o"
-  "/Users/cj/CLionProjects/A1/Main/BufferTest/source/BufferQUnit.cc" "/Users/cj/CLionProjects/A1/cmake-build-debug/CMakeFiles/A1.dir/Main/BufferTest/source/BufferQUnit.cc.o"
-  "/Users/cj/CLionProjects/A1/Main/Catalog/source/MyDB_Table.cc" "/Users/cj/CLionProjects/A1/cmake-build-debug/CMakeFiles/A1.dir/Main/Catalog/source/MyDB_Table.cc.o"
+  "/Users/liufang/Documents/A1/Main/BufferMgr/source/MyDB_BufferManager.cc" "/Users/liufang/Documents/A1/cmake-build-debug/CMakeFiles/A1.dir/Main/BufferMgr/source/MyDB_BufferManager.cc.o"
+  "/Users/liufang/Documents/A1/Main/BufferMgr/source/MyDB_Page.cc" "/Users/liufang/Documents/A1/cmake-build-debug/CMakeFiles/A1.dir/Main/BufferMgr/source/MyDB_Page.cc.o"
+  "/Users/liufang/Documents/A1/Main/BufferMgr/source/MyDB_PageHandle.cc" "/Users/liufang/Documents/A1/cmake-build-debug/CMakeFiles/A1.dir/Main/BufferMgr/source/MyDB_PageHandle.cc.o"
+  "/Users/liufang/Documents/A1/Main/BufferTest/source/BufferQUnit.cc" "/Users/liufang/Documents/A1/cmake-build-debug/CMakeFiles/A1.dir/Main/BufferTest/source/BufferQUnit.cc.o"
+  "/Users/liufang/Documents/A1/Main/Catalog/source/MyDB_Table.cc" "/Users/liufang/Documents/A1/cmake-build-debug/CMakeFiles/A1.dir/Main/Catalog/source/MyDB_Table.cc.o"
   )
 set(CMAKE_CXX_COMPILER_ID "AppleClang")
 

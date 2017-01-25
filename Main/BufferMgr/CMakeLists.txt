@@ -11,4 +11,9 @@ set(SOURCE_FILES
         headers/MyDB_Page.h
         source/MyDB_Page.cc)
 
+include_directories(
+        Main/BufferMgr/headers
+        Main/Catalog/headers
+        Main/Qunit/headers
+)
 add_executable(BufferMgr ${SOURCE_FILES})

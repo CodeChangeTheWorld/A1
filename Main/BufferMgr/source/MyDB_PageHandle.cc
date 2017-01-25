@@ -18,5 +18,9 @@ MyDB_PageHandleBase :: ~MyDB_PageHandleBase () {
 void MyDB_PageHandleBase::unpin() {
 	this->pgobject.setpin(false);
 }
+
+MyDB_PageHandleBase::MyDB_PageHandleBase(MyDB_Page page){
+	this->pgobject.setPage(page);
+}
 #endif
 
