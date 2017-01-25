@@ -7,10 +7,16 @@
 #IncludeRegexTransform: 
 
 ../Main/BufferMgr/headers/MyDB_BufferManager.h
+unordered_map
+-
+map
+-
 MyDB_PageHandle.h
 ../Main/BufferMgr/headers/MyDB_PageHandle.h
 MyDB_Table.h
 ../Main/BufferMgr/headers/MyDB_Table.h
+MyDB_Page.h
+../Main/BufferMgr/headers/MyDB_Page.h
 
 ../Main/BufferMgr/headers/MyDB_Page.h
 
@@ -30,31 +36,49 @@ sstream
 string
 -
 
-/Users/liufang/Documents/A1/Main/BufferMgr/source/MyDB_BufferManager.cc
+/Users/cj/CLionProjects/A1/Main/BufferMgr/source/MyDB_BufferManager.cc
 MyDB_BufferManager.h
-/Users/liufang/Documents/A1/Main/BufferMgr/source/MyDB_BufferManager.h
+/Users/cj/CLionProjects/A1/Main/BufferMgr/source/MyDB_BufferManager.h
 string
 -
-
-/Users/liufang/Documents/A1/Main/BufferMgr/source/MyDB_Page.cc
+stdlib.h
+-
+iostream
+-
+sys/types.h
+-
+fcntl.h
+-
+sys/stat.h
+-
+unistd.h
+-
+unordered_map
+-
 MyDB_Page.h
-/Users/liufang/Documents/A1/Main/BufferMgr/source/MyDB_Page.h
+-
+map
+-
 
-/Users/liufang/Documents/A1/Main/BufferMgr/source/MyDB_PageHandle.cc
+/Users/cj/CLionProjects/A1/Main/BufferMgr/source/MyDB_Page.cc
+MyDB_Page.h
+/Users/cj/CLionProjects/A1/Main/BufferMgr/source/MyDB_Page.h
+
+/Users/cj/CLionProjects/A1/Main/BufferMgr/source/MyDB_PageHandle.cc
 memory
 -
 MyDB_PageHandle.h
-/Users/liufang/Documents/A1/Main/BufferMgr/source/MyDB_PageHandle.h
+/Users/cj/CLionProjects/A1/Main/BufferMgr/source/MyDB_PageHandle.h
 
-/Users/liufang/Documents/A1/Main/BufferTest/source/BufferQUnit.cc
+/Users/cj/CLionProjects/A1/Main/BufferTest/source/BufferQUnit.cc
 MyDB_BufferManager.h
-/Users/liufang/Documents/A1/Main/BufferTest/source/MyDB_BufferManager.h
+/Users/cj/CLionProjects/A1/Main/BufferTest/source/MyDB_BufferManager.h
 MyDB_PageHandle.h
-/Users/liufang/Documents/A1/Main/BufferTest/source/MyDB_PageHandle.h
+/Users/cj/CLionProjects/A1/Main/BufferTest/source/MyDB_PageHandle.h
 MyDB_Table.h
-/Users/liufang/Documents/A1/Main/BufferTest/source/MyDB_Table.h
+/Users/cj/CLionProjects/A1/Main/BufferTest/source/MyDB_Table.h
 QUnit.h
-/Users/liufang/Documents/A1/Main/BufferTest/source/QUnit.h
+/Users/cj/CLionProjects/A1/Main/BufferTest/source/QUnit.h
 iostream
 -
 unistd.h
@@ -62,7 +86,7 @@ unistd.h
 vector
 -
 
-/Users/liufang/Documents/A1/Main/Catalog/source/MyDB_Table.cc
+/Users/cj/CLionProjects/A1/Main/Catalog/source/MyDB_Table.cc
 MyDB_Table.h
-/Users/liufang/Documents/A1/Main/Catalog/source/MyDB_Table.h
+/Users/cj/CLionProjects/A1/Main/Catalog/source/MyDB_Table.h
 

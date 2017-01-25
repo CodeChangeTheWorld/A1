@@ -2,10 +2,61 @@
 #ifndef BUFFER_MGR_H
 #define BUFFER_MGR_H
 
+#include <unordered_map>
+#include <map>
 #include "MyDB_PageHandle.h"
 #include "MyDB_Table.h"
+#include "MyDB_Page.h"
 
 using namespace std;
+
+class MyDB_table_page{
+public:
+    MyDB_table_page(MyDB_TablePtr table, long id);
+
+    ~MyDB_table_page();
+
+    MyDB_TablePtr getTablePtr();
+
+    long getpgid();
+
+private:
+
+    MyDB_TablePtr tbptr;
+    long pgid;
+
+};
+//typedef shared_ptr <MyDB_table_page> MyDB_tpptr;
+
+
+class MyHash
+{
+public:
+
+    size_t operator()(MyDB_table_page& ptr)
+    {
+        hash<string> sh;
+        return sh(ptr.getTablePtr()->getName() + "/"
+                  + ptr.getTablePtr()->getStorageLoc() + "/"
+                  + to_string(ptr.getpgid()));
+    }
+};
+
+class MyEqualTo {
+public:
+
+    bool operator()( MyDB_table_page& p1, MyDB_table_page& p2)  const
+    {
+        return p1.getTablePtr()->getName() + "/"
+               + p1.getTablePtr()->getStorageLoc() + "/"
+               + to_string(p1.getpgid())
+               ==
+               p2.getTablePtr()->getName() + "/"
+               + p2.getTablePtr()->getStorageLoc() + "/"
+               + to_string(p2.getpgid());
+    }
+};
+
 
 class MyDB_BufferManager {
 
@@ -47,16 +98,24 @@ public:
 	// and any temporary files need to be deleted
 	~MyDB_BufferManager ();
 
-	// FEEL FREE TO ADD ADDITIONAL PUBLIC METHODS 
+	// FEEL FREE TO ADD ADDITIONAL PUBLIC METHODS
+
+    long getts();
+    void setts(long nts);
 
 private:
 
 	// YOUR STUFF HERE
 	size_t pageSize, numPages;
 	string tempFile;
-
-
+    char * buffer;
+    int tmp;
+    unordered_map<MyDB_table_page, MyDB_Page, MyHash, MyEqualTo> tpmap;
+    map <long, MyDB_table_page> lrumap;
+    long timestamp;
 };
+
+
 
 #endif
 

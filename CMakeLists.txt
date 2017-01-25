@@ -11,7 +11,9 @@ set(SOURCE_FILES
         Main/BufferTest/source/BufferQUnit.cc
         Main/Catalog/headers/MyDB_Table.h
         Main/Catalog/source/MyDB_Table.cc
-        Main/Qunit/headers/QUnit.h Main/BufferMgr/source/MyDB_Page.cc Main/BufferMgr/headers/MyDB_Page.h)
+        Main/Qunit/headers/QUnit.h
+        Main/BufferMgr/source/MyDB_Page.cc
+        Main/BufferMgr/headers/MyDB_Page.h)
 include_directories(
         Main/BufferMgr/headers
         Main/Catalog/headers

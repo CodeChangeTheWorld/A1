@@ -4,15 +4,6 @@
 
 #include "MyDB_Page.h"
 
-char* bytes;
-
-MyDB_Page::MyDB_Page();
-long getLRU();
-void setLRU(long lru);
-long getOffset();
-void setOffset(long offset);
-bool getDirty();
-void setDirty(bool dirty);
 
 MyDB_Page::MyDB_Page() {
 

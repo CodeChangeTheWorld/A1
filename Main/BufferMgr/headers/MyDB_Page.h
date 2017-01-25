@@ -4,7 +4,7 @@
 
 #ifndef A1_MYDB_PAGE_H
 #define A1_MYDB_PAGE_H
-#endif A1_MYDB_PAGE_H
+
 
 class MyDB_Page{
     long lru_counter;
@@ -23,3 +23,5 @@ public:
     void setDirty(bool dirty);
     ~MyDB_Page();
 };
+
+#endif //A1_MYDB_PAGE_H
