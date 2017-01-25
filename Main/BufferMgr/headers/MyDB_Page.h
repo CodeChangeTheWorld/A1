@@ -6,7 +6,10 @@
 #define A1_MYDB_PAGE_H
 
 
-#include "MyDB_BufferManager.h"
+#include "MyDB_Table.h"
+//#include "MyDB_BufferManager.h"
+
+class MyDB_BufferManager;
 
 class MyDB_Page{
     long lru_counter;

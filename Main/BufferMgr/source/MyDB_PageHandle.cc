@@ -16,11 +16,11 @@ MyDB_PageHandleBase :: ~MyDB_PageHandleBase () {
 }
 
 void MyDB_PageHandleBase::unpin() {
-	this->pgobject.setpin(false);
+	this->pgobject.get()->setpin(false);
 }
 
-MyDB_PageHandleBase::MyDB_PageHandleBase(MyDB_Page page){
-	this->pgobject.setPage(page);
+MyDB_PageHandleBase::MyDB_PageHandleBase(shared_ptr<MyDB_Page> page){
+	this->pgobject = page;
 }
 #endif
 

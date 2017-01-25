@@ -37,13 +37,13 @@ public:
 
     void unpin();
 	MyDB_PageHandleBase();
-	MyDB_PageHandleBase(MyDB_Page page);
+	MyDB_PageHandleBase(shared_ptr<MyDB_Page> page);
 
 
 private:
 
 	// YOUR CODE HERE
-    MyDB_Page pgobject;
+    shared_ptr<MyDB_Page> pgobject;
 };
 
 #endif

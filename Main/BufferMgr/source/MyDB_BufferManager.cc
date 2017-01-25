@@ -11,7 +11,6 @@
 #include<sys/stat.h>
 #include <unistd.h>
 #include <unordered_map>
-#include <MyDB_Page.h>
 #include <map>
 
 using namespace std;
@@ -28,7 +27,9 @@ MyDB_PageHandle MyDB_BufferManager :: getPage (MyDB_TablePtr ptr, long id) {
     else{
         // found, just return
         std::cout<<"find it"<<endl;
-        return make_shared<MyDB_PageHandleBase>();
+        shared_ptr<MyDB_Page> pg(&it->second);
+//        pg.reset(&it->second);
+        return make_shared<MyDB_PageHandleBase>(pg);
     }
     return nullptr;
 }
@@ -46,8 +47,9 @@ MyDB_PageHandle MyDB_BufferManager :: getPinnedPage (MyDB_TablePtr ptr, long id)
     }
     else{
         std::cout<<"find it"<<endl;
-        // found
-        return make_shared<MyDB_PageHandleBase>();
+        shared_ptr<MyDB_Page> pg(&it->second);
+//        pg.reset(&it->second);
+        return make_shared<MyDB_PageHandleBase>(pg);
     }
 
 }

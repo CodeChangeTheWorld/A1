@@ -2,8 +2,11 @@
 // Created by Liu Fang on 1/24/17.
 //
 
-#include "MyDB_Page.h"
+#ifndef PAGE_C
+#define PAGE_C
 
+#include "MyDB_Page.h"
+#include "MyDB_BufferManager.h"
 
 MyDB_Page::MyDB_Page() {
 
@@ -46,3 +49,4 @@ void MyDB_Page::setpin(bool pinvalue) {
     this->pin = pinvalue;
 }
 
+#endif
