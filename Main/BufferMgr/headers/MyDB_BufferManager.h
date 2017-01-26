@@ -20,6 +20,7 @@ public:
 
     const long getpgid() const;
 
+
 private:
 
     MyDB_TablePtr tbptr;
@@ -103,10 +104,10 @@ public:
     long getts();
     void setts(long nts);
 
-    void updateLRU(shared_ptr<MyDB_Page> pgptr);
-
-    shared_ptr<MyDB_table_page> checklru(long lru);
-
+    void updateLRU(shared_ptr<MyDB_Page> p);
+    void writeBack(shared_ptr<MyDB_Page> p);
+    shared_ptr<MyDB_Page> checklru(long lru);
+	void* getBytes(shared_ptr<MyDB_Page> p);
     map <long, MyDB_table_page> lrumap;
     unordered_map<MyDB_table_page, MyDB_Page, MyHash, MyEqualTo> tpmap;
 private:
@@ -116,8 +117,6 @@ private:
 	string tempFile;
     char * buffer;
     int tmp;
-
-
     long timestamp;
 };
 
