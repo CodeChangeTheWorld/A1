@@ -109,7 +109,8 @@ public:
     shared_ptr<MyDB_table_page> checklru(long lru);
 	void* getBytes(shared_ptr<MyDB_Page>  p);
     map <long, MyDB_table_page> lrumap;
-    unordered_map<MyDB_table_page, MyDB_Page, MyHash, MyEqualTo> tpmap;
+//    unordered_map<MyDB_table_page, MyDB_Page, MyHash, MyEqualTo> tpmap;
+    map<MyDB_table_page, MyDB_Page, MyEqualTo> tpmap;
 private:
 
 	// YOUR STUFF HERE
