@@ -184,17 +184,24 @@ void* MyDB_BufferManager::getBytes(shared_ptr<MyDB_Page> page){
             //full
             if(this->lrumap.size()==numPages){
                 shared_ptr<MyDB_Page> lrupage;
-                int i=0;
-                do {  lrupage = &this->tpmap.find(this->lrumap[i])->second;
-                      i++;
-                }while(lrupage->getpin()==true && i<lrumap.size());
+//                int i=0;
+//                do {  lrupage = shared_ptr<MyDB_Page> (&this->tpmap.find(this->lrumap[i])->second);
+//                      i++;
+//                }while(lrupage->getpin()==true && i<lrumap.size());
 
-                if(lrupage->getDirty()== true){
+                for(map<long, MyDB_table_page>::iterator i = this->lrumap.begin(); i != this->lrumap.end(); i++){
+                    if(!this->tpmap.find(i->second)->second.getpin()){
+                        lrupage = shared_ptr<MyDB_Page> (&this->tpmap.find(i->second)->second);
+                        break;
+                    }
+                }
+
+                if(lrupage->getDirty()){
                     writeBack(lrupage);
                     lrupage->setDirty(false);
                 }
-                int curoffset = lrupage->getOffset();
-                int oldlrunum = lrupage->getLRU();
+                long curoffset = lrupage->getOffset();
+                long oldlrunum = lrupage->getLRU();
                 page->setLRU(oldlrunum);
                 page->setOffset(curoffset);
             }
