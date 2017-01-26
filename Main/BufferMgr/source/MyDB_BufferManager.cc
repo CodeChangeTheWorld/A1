@@ -13,6 +13,7 @@
 #include <unistd.h>
 #include <unordered_map>
 #include <map>
+#include <iterator>
 
 using namespace std;
 
@@ -74,6 +75,8 @@ MyDB_BufferManager :: MyDB_BufferManager (size_t pgSize, size_t pgNum, string tm
 	this->pageSize = pgSize;
 	this->numPages = pgNum;
 	this->tempFile = tmpFile;
+    this->timestamp = 0;
+    //this->lrumap = new map<long, MyDB_table_page>();
 
 	// allocate memory
 	this->buffer = (char*) malloc (this->pageSize * this->numPages);
@@ -91,11 +94,11 @@ MyDB_BufferManager :: MyDB_BufferManager (size_t pgSize, size_t pgNum, string tm
     wt = write(tmp, "123", 20);
     std::cout<<wt<<endl;
 
-    MyDB_TablePtr table1 = make_shared <MyDB_Table> ("tempTable", "foobar");
-    MyDB_table_page tp = MyDB_table_page(table1, 0);
-//    MyDB_tpptr ptr1 = make_shared <MyDB_table_page> (table1, 0);
-    std::pair<MyDB_table_page, MyDB_Page> pair1(tp, MyDB_Page());
-    this->tpmap.insert(pair1);
+//    MyDB_TablePtr table1 = make_shared <MyDB_Table> ("tempTable", "foobar");
+//    MyDB_table_page tp = MyDB_table_page(table1, 0);
+////    MyDB_tpptr ptr1 = make_shared <MyDB_table_page> (table1, 0);
+//    std::pair<MyDB_table_page, MyDB_Page> pair1(tp, MyDB_Page());
+//    this->tpmap.insert(pair1);
 
 
 
@@ -133,56 +136,29 @@ const MyDB_TablePtr& MyDB_table_page::getTablePtr() const{
 
 shared_ptr<MyDB_table_page> MyDB_BufferManager::checklru(long lru){
     map<long, MyDB_table_page>::iterator iterator1 = this->lrumap.find(lru);
+
     if(iterator1 == this->lrumap.end()){
+        cout<<"nullllllllllllll"<<endl;
         return nullptr;
     }
     else{
-        return shared_ptr<MyDB_table_page>  (& (iterator1->second));
-    }
-
-}
-
-void MyDB_BufferManager::updateLRU(shared_ptr<MyDB_Page> pgptr) {
-    long lrunum = pgptr->getLRU();
-
-    // new timestamp or lru number
-    this->timestamp++;
-
-    // update lrunum in object
-    pgptr->setLRU(this->timestamp);
-
-    MyDB_table_page nID = MyDB_table_page(pgptr.get()->getTable(), pgptr.get()->getPageID());
-    std::pair<long, MyDB_table_page> npair1(this->timestamp, nID);
-    this->lrumap.insert(npair1);
-
-    unordered_map<MyDB_table_page, MyDB_Page, MyHash, MyEqualTo>::iterator iterator1 = this->tpmap.find(nID);
-
-    if(iterator1 != this->tpmap.end()){
-        // exist
-        // can use a better way
-        this->tpmap.erase(nID);
-
-    }
-
-    std::pair<MyDB_table_page, MyDB_Page> npair(nID, *pgptr.get());
-    this->tpmap.insert(npair);
-
-    shared_ptr<MyDB_table_page> check = this->checklru(pgptr->getLRU());
-
-    // lru is full or object is contained in lrumap
-    if(check != nullptr){
-        // lru is full or map contain
-        this->lrumap.erase(lrunum);
+        cout<<"in!!!!!!!!!!!!!!!"<<endl;
+        return shared_ptr<MyDB_table_page>  (&(iterator1->second));
     }
 
 }
 
 
-void* MyDB_BufferManager::getBytes(shared_ptr<MyDB_Page> page){
+
+void* MyDB_BufferManager::getBytes(shared_ptr<MyDB_Page>  page){
         shared_ptr<MyDB_table_page> curpage = this->checklru(page.get()->getLRU());
         if(curpage == nullptr){
             //full
-            if(this->lrumap.size()==numPages){
+            cout<<this->lrumap.size()<<endl;
+            cout<<numPages<<endl;
+            if(numPages == this->lrumap.size()){
+//            if(1 != 0){
+                cout<<numPages<<endl;
                 shared_ptr<MyDB_Page> lrupage;
 //                int i=0;
 //                do {  lrupage = shared_ptr<MyDB_Page> (&this->tpmap.find(this->lrumap[i])->second);
@@ -214,10 +190,57 @@ void* MyDB_BufferManager::getBytes(shared_ptr<MyDB_Page> page){
             int bytes_read = read(file,(this->buffer)+page->getOffset(),pageSize);
         }
         this->updateLRU(page);
+    cout<<"1111111111"<<endl;
+//    this->updateLRU(shared_ptr<MyDB_Page>(page.get()));
         return (this->buffer)+page->getOffset();
 }
 
-void MyDB_BufferManager::writeBack(shared_ptr<MyDB_Page> p) {
+void MyDB_BufferManager::updateLRU(shared_ptr<MyDB_Page>  pgptr) {
+    cout<<"22222222222222222"<<endl;
+    long lrunum = pgptr->getLRU();
+
+    // new timestamp or lru number
+    this->timestamp++;
+
+    // update lrunum in object
+    pgptr.get()->setLRU(this->timestamp);
+//    pgptr->setLRU(this->timestamp);
+
+//    MyDB_table_page nID = MyDB_table_page(pgptr.get()->getTable(), pgptr.get()->getPageID());
+    MyDB_table_page nID(pgptr.get()->getTable(), pgptr.get()->getPageID());
+//    MyDB_table_page nID = MyDB_table_page(pgptr->getTable(), pgptr->getPageID());
+    std::pair<long, MyDB_table_page> npair1(this->timestamp, nID);
+    this->lrumap.insert(npair1);
+//    cin.get();
+    std::unordered_map<MyDB_table_page, MyDB_Page, MyHash, MyEqualTo>::iterator iterator1 = this->tpmap.find(nID);
+
+    cout<<"iterator"<<endl;
+
+    if(iterator1 != this->tpmap.end()){
+        // exist
+        // can use a better way
+        cout<<"erasing"<<endl;
+        this->tpmap.erase(nID);
+
+    }
+
+    std::pair<MyDB_table_page, MyDB_Page> npair(nID, *pgptr.get());
+    this->tpmap.insert(npair);
+
+    shared_ptr<MyDB_table_page> check = this->checklru(lrunum);
+
+    // lru is full or object is contained in lrumap
+    if(check != nullptr){
+//    if(check.get() == NULL){
+        // lru is full or map contain
+        cout<<"erasing2"<<endl;
+        this->lrumap.erase(lrunum);
+    }
+    cout<<"hereherehereherehere"<<endl;
+}
+
+
+void MyDB_BufferManager::writeBack(shared_ptr<MyDB_Page>  p) {
     MyDB_TablePtr table = p->getTable();
     int file = open(table->getStorageLoc().c_str(), O_CREAT | O_RDWR | O_FSYNC, 0666);
     lseek(file, pageSize*(p->getPageID()), SEEK_SET);

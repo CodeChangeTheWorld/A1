@@ -6,7 +6,7 @@
 #include <map>
 #include "MyDB_PageHandle.h"
 #include "MyDB_Table.h"
-//#include "MyDB_Page.h"
+#include "MyDB_Page.h"
 
 using namespace std;
 
@@ -104,16 +104,16 @@ public:
     long getts();
     void setts(long nts);
 
-    void updateLRU(shared_ptr<MyDB_Page> p);
-    void writeBack(shared_ptr<MyDB_Page> p);
+    void updateLRU(shared_ptr<MyDB_Page>  p);
+    void writeBack(shared_ptr<MyDB_Page>  p);
     shared_ptr<MyDB_table_page> checklru(long lru);
-	void* getBytes(shared_ptr<MyDB_Page> p);
+	void* getBytes(shared_ptr<MyDB_Page>  p);
     map <long, MyDB_table_page> lrumap;
     unordered_map<MyDB_table_page, MyDB_Page, MyHash, MyEqualTo> tpmap;
 private:
 
 	// YOUR STUFF HERE
-	size_t pageSize, numPages;
+	int pageSize, numPages;
 	string tempFile;
     char * buffer;
     int tmp;

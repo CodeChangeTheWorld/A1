@@ -60,8 +60,8 @@ long MyDB_Page::getPageID(){
 MyDB_BufferManager* MyDB_Page::getBufferManager() {
     return this->bfmanager;
 }
-void* getBytes(long lru){
-
-}
+//void* getBytes(long lru){
+//
+//}
 
 #endif

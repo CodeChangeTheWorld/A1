@@ -75,9 +75,13 @@ int main () {
 		// allocate a pinned page
 		cout << "allocating pinned page\n";
 		MyDB_PageHandle pinnedPage = myMgr.getPinnedPage (table1, 0);
+		cout<<"1"<<endl;
 		char *bytes = (char *) pinnedPage->getBytes ();
+		cout<<"2"<<endl;
 		writeNums (bytes, 64, 0);
+		cout<<"3"<<endl;
 		pinnedPage->wroteBytes ();
+		cout<<"4"<<endl;
 
 		
 		// create a bunch of pinned pages and remember them
