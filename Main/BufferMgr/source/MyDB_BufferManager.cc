@@ -53,7 +53,7 @@ MyDB_PageHandle MyDB_BufferManager :: getPinnedPage (MyDB_TablePtr ptr, long id)
         std::cout<<"find it"<<endl;
         shared_ptr<MyDB_Page> pg(&it->second);
         return make_shared<MyDB_PageHandleBase>(pg);
-    }
+    } 
 
 }
 
