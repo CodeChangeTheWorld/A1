@@ -130,28 +130,49 @@ const MyDB_TablePtr& MyDB_table_page::getTablePtr() const{
     return this->tbptr;
 }
 
-shared_ptr<MyDB_Page> MyDB_BufferManager::checklru(long lru){
+shared_ptr<MyDB_table_page> MyDB_BufferManager::checklru(long lru){
     map<long, MyDB_table_page>::iterator iterator1 = this->lrumap.find(lru);
     if(iterator1 == this->lrumap.end()){
         return nullptr;
     }
     else{
-        return shared_ptr<MyDB_Page> (&this->tpmap.find(iterator1->second)->second);
+        return shared_ptr<MyDB_table_page>  (& (iterator1->second));
     }
 
 }
 
-void MyDB_BufferManager::updateLRU(long lru) {
-    // check existence
-    shared_ptr<MyDB_Page> check = this->checklru(lru);
-    if(check == nullptr){
-        // full or not
-        if(this->lrumap.size() >= this->numPages){
-            
-        }
-    }
-    else{
+void MyDB_BufferManager::updateLRU(shared_ptr<MyDB_Page> pgptr) {
 
+    long lrunum = pgptr->getLRU();
+
+    // new timestamp or lru number
+    this->timestamp++;
+
+    // update lrunum in object
+    pgptr->setLRU(this->timestamp);
+
+    MyDB_table_page nID = MyDB_table_page(pgptr.get()->getTable(), pgptr.get()->getPageID());
+    std::pair<long, MyDB_table_page> npair1(this->timestamp, nID);
+    this->lrumap.insert(npair1);
+
+    unordered_map<MyDB_table_page, MyDB_Page, MyHash, MyEqualTo>::iterator iterator1 = this->tpmap.find(nID);
+
+    if(iterator1 != this->tpmap.end()){
+        // exist
+        // can use a better way
+        this->tpmap.erase(nID);
+
+    }
+
+    std::pair<MyDB_table_page, MyDB_Page> npair(nID, *pgptr.get());
+    this->tpmap.insert(npair);
+
+    shared_ptr<MyDB_table_page> check = this->checklru(pgptr->getLRU());
+
+    // lru is full or object is contained in lrumap
+    if(check != nullptr){
+        // lru is full or map contain
+        this->lrumap.erase(lrunum);
     }
 
 }

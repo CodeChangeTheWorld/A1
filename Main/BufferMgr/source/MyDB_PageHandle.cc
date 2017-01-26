@@ -7,14 +7,14 @@
 #include "MyDB_BufferManager.h"
 
 void *MyDB_PageHandleBase :: getBytes () {
-	long lru = this->pgobject.get()->getLRU();
-    return this->pgobject.get()->getBufferManager()->getBytes(lru);
+//	long lru = this->pgobject.get()->getLRU();
+    return this->pgobject.get()->getBufferManager()->getBytes(this->pgobject);
 }
 
 void MyDB_PageHandleBase :: wroteBytes () {
+//    long lru = this->pgobject.get()->getLRU();
+    this->pgobject.get()->getBufferManager()->updateLRU(this->pgobject);
     this->pgobject.get()->setDirty(true);
-    long lru = this->pgobject.get()->getLRU();
-    this->pgobject.get()->getBufferManager()->updateLRU(lru);
 }
 
 MyDB_PageHandleBase :: ~MyDB_PageHandleBase () {

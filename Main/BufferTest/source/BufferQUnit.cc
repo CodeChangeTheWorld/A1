@@ -62,6 +62,11 @@ int main () {
 //			cout<<testmap.end()->second<<endl;
 //		}
 
+		int * p = new int[10];
+		*(p+2) = 1000000;
+		cout<<p[2]<<endl;
+
+
 
 		// create a buffer manager 
 		MyDB_BufferManager myMgr (64, 16, "tempDSFSD");

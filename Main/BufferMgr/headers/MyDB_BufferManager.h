@@ -103,9 +103,9 @@ public:
     long getts();
     void setts(long nts);
 
-    void updateLRU(long lru);
+    void updateLRU(shared_ptr<MyDB_Page> pgptr);
 
-    shared_ptr<MyDB_Page> checklru(long lru);
+    shared_ptr<MyDB_table_page> checklru(long lru);
 
     map <long, MyDB_table_page> lrumap;
     unordered_map<MyDB_table_page, MyDB_Page, MyHash, MyEqualTo> tpmap;
