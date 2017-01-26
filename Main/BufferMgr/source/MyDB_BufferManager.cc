@@ -179,7 +179,7 @@ void MyDB_BufferManager::updateLRU(shared_ptr<MyDB_Page> pgptr) {
 
 
 void* MyDB_BufferManager::getBytes(shared_ptr<MyDB_Page> page){
-        shared_ptr<MyDB_Page> curpage = this->checklru(page.get()->getLRU());
+        shared_ptr<MyDB_table_page> curpage = this->checklru(page.get()->getLRU());
         if(curpage == nullptr){
             //full
             if(this->lrumap.size()==numPages){
