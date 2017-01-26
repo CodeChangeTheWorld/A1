@@ -145,10 +145,13 @@ void MyDB_BufferManager::updateLRU(long lru) {
     // check existence
     shared_ptr<MyDB_Page> check = this->checklru(lru);
     if(check == nullptr){
-
+        // full or not
+        if(this->lrumap.size() >= this->numPages){
+            
+        }
     }
     else{
-        this->lrumap
+
     }
 
 }
