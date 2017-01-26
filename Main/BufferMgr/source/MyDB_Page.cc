@@ -50,7 +50,7 @@ void MyDB_Page::setpin(bool pinvalue) {
 }
 
 MyDB_BufferManager* MyDB_Page::getBufferManager() {
-    return this->&bfmanager;
+    return this->bfmanager;
 }
 
 #endif

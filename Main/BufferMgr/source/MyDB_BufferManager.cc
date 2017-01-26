@@ -130,6 +130,23 @@ const MyDB_TablePtr& MyDB_table_page::getTablePtr() const{
     return this->tbptr;
 }
 
+shared_ptr<MyDB_Page> MyDB_BufferManager::checklru(long lru){
+    map<long, shared_ptr<MyDB_Page>>::iterator iterator1 = this->lrumap.find(lru);
+    if(iterator1 == this->lrumap.end()){
+        return nullptr;
+    }
+    else{
+        return iterator1->second;
+    }
+
+}
+
+void MyDB_BufferManager::updateLRU(long lru) {
+    // check existence
+
+
+}
+
 #endif
 
 

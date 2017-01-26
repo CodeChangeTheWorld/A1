@@ -103,6 +103,12 @@ public:
     long getts();
     void setts(long nts);
 
+    void updateLRU(long lru);
+
+    shared_ptr<MyDB_Page> checklru(long lru);
+
+    map <long, shared_ptr<MyDB_Page>> lrumap;
+
 private:
 
 	// YOUR STUFF HERE
@@ -111,7 +117,7 @@ private:
     char * buffer;
     int tmp;
     unordered_map<MyDB_table_page, MyDB_Page, MyHash, MyEqualTo> tpmap;
-    map <long, MyDB_table_page> lrumap;
+
     long timestamp;
 };
 
