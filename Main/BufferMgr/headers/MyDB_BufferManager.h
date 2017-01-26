@@ -84,6 +84,7 @@ public:
 	// gets a temporary page, like getPage (), except that this one is pinned
 	MyDB_PageHandle getPinnedPage ();
 
+
 	// un-pins the specified page
 	void unpin (MyDB_PageHandle unpinMe);
 

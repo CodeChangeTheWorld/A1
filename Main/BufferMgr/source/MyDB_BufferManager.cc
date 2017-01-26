@@ -142,7 +142,7 @@ shared_ptr<MyDB_table_page> MyDB_BufferManager::checklru(long lru){
 }
 
 void MyDB_BufferManager::updateLRU(shared_ptr<MyDB_Page> pgptr) {
-    
+
 
     long lrunum = pgptr->getLRU();
 

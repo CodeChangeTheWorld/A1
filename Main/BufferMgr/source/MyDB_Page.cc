@@ -11,6 +11,7 @@
 MyDB_Page::MyDB_Page() {
 
 }
+
 MyDB_Page::MyDB_Page(MyDB_BufferManager* manager, MyDB_TablePtr ptr,long id){
     this->bfmanager= manager;
     this->tableptr = ptr;
