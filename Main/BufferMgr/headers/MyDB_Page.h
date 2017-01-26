@@ -17,7 +17,7 @@ class MyDB_Page{
     bool pin;
     long offset;
     MyDB_BufferManager* bfmanager;
-    MyDB_TablePtr ptr;
+    MyDB_TablePtr tableptr;
     long pageid;
 
 public:
@@ -32,6 +32,8 @@ public:
     void setDirty(bool dirty);
     void setpin(bool pinvalue);
     bool getpin();
+    MyDB_TablePtr getTable();
+    long getPageID();
     MyDB_BufferManager * getBufferManager();
     ~MyDB_Page();
 };

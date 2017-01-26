@@ -7,13 +7,13 @@
 
 #include "MyDB_Page.h"
 #include "MyDB_BufferManager.h"
-
+#include "MyDB_Table.h"
 MyDB_Page::MyDB_Page() {
 
 }
 MyDB_Page::MyDB_Page(MyDB_BufferManager* manager, MyDB_TablePtr ptr,long id){
     this->bfmanager= manager;
-    this->ptr = ptr;
+    this->tableptr = ptr;
     this->pageid = id;
     pin = false;
     dirty = false;
@@ -49,8 +49,19 @@ void MyDB_Page::setpin(bool pinvalue) {
     this->pin = pinvalue;
 }
 
+MyDB_TablePtr MyDB_Page::getTable(){
+    return this->tableptr;
+}
+
+long MyDB_Page::getPageID(){
+    return this->pageid;
+}
+
 MyDB_BufferManager* MyDB_Page::getBufferManager() {
     return this->bfmanager;
+}
+void* getBytes(long lru){
+
 }
 
 #endif
