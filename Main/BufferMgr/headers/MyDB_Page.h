@@ -32,6 +32,7 @@ public:
     void setDirty(bool dirty);
     void setpin(bool pinvalue);
     bool getpin();
+    MyDB_BufferManager * getBufferManager();
     ~MyDB_Page();
 };
 

@@ -22,20 +22,21 @@ MyDB_PageHandle MyDB_BufferManager :: getPage (MyDB_TablePtr ptr, long id) {
     if(it == this->tpmap.end()){
         std::cout<<"not find"<<endl;
         // not found
-        //
+        shared_ptr<MyDB_Page> pg = make_shared<MyDB_Page>(this, ptr, id);
+        return make_shared<MyDB_PageHandleBase>(pg);
     }
     else{
         // found, just return
         std::cout<<"find it"<<endl;
-        shared_ptr<MyDB_Page> pg(&it->second);
-//        pg.reset(&it->second);
+        shared_ptr<MyDB_Page> pg(&(it->second));
         return make_shared<MyDB_PageHandleBase>(pg);
     }
-    return nullptr;
 }
 
 MyDB_PageHandle MyDB_BufferManager :: getPage () {
-	return nullptr;		
+    MyDB_TablePtr tppointer = make_shared<MyDB_Table>(this->tempFile,this->tempFile);
+    shared_ptr<MyDB_Page> pg = make_shared<MyDB_Page>(this, tppointer, 0);
+    return make_shared<MyDB_PageHandleBase>(pg);
 }
 
 MyDB_PageHandle MyDB_BufferManager :: getPinnedPage (MyDB_TablePtr ptr, long id) {
@@ -43,19 +44,23 @@ MyDB_PageHandle MyDB_BufferManager :: getPinnedPage (MyDB_TablePtr ptr, long id)
     unordered_map<MyDB_table_page, MyDB_Page, MyHash, MyEqualTo>::iterator it = this->tpmap.find(tp1);
     if(it == tpmap.end()){
         std::cout<<"not find"<<endl;
-        return nullptr;
+        shared_ptr<MyDB_Page> pg = make_shared<MyDB_Page>(this, ptr, id);
+        pg.get()->setpin(true);
+        return make_shared<MyDB_PageHandleBase>(pg);
     }
     else{
         std::cout<<"find it"<<endl;
         shared_ptr<MyDB_Page> pg(&it->second);
-//        pg.reset(&it->second);
         return make_shared<MyDB_PageHandleBase>(pg);
     }
 
 }
 
 MyDB_PageHandle MyDB_BufferManager :: getPinnedPage () {
-	return nullptr;		
+    MyDB_TablePtr tppointer = make_shared<MyDB_Table>(this->tempFile,this->tempFile);
+    shared_ptr<MyDB_Page> pg = make_shared<MyDB_Page>(this, tppointer, 0);
+    pg.get()->setpin(true);
+    return make_shared<MyDB_PageHandleBase>(pg);
 }
 
 void MyDB_BufferManager :: unpin (MyDB_PageHandle unpinMe) {
@@ -71,7 +76,7 @@ MyDB_BufferManager :: MyDB_BufferManager (size_t pgSize, size_t pgNum, string tm
 
 	// allocate memory
 	this->buffer = (char*) malloc (this->pageSize * this->numPages);
-	if(buffer == NULL)  {
+	if(this->buffer == NULL)  {
         std::cout<<"failed"<<endl;
         exit(1);
     }
@@ -79,7 +84,7 @@ MyDB_BufferManager :: MyDB_BufferManager (size_t pgSize, size_t pgNum, string tm
 
     // open tmpFile
     this->tmp = open(this->tempFile.c_str(), O_CREAT | O_RDWR | O_FSYNC, 0666);
-    std::cout<< tmp<< endl;
+    std::cout<< this->tmp<< endl;
     lseek(tmp, 64, SEEK_SET);
     ssize_t wt;
     wt = write(tmp, "123", 20);

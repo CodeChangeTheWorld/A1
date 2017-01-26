@@ -12,7 +12,7 @@ MyDB_Page::MyDB_Page() {
 
 }
 MyDB_Page::MyDB_Page(MyDB_BufferManager* manager, MyDB_TablePtr ptr,long id){
-    this->bfmanager= bfmanager;
+    this->bfmanager= manager;
     this->ptr = ptr;
     this->pageid = id;
     pin = false;
@@ -47,6 +47,10 @@ bool MyDB_Page::getpin() {
 
 void MyDB_Page::setpin(bool pinvalue) {
     this->pin = pinvalue;
+}
+
+MyDB_BufferManager* MyDB_Page::getBufferManager() {
+    return this->&bfmanager;
 }
 
 #endif
