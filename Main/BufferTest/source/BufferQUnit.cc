@@ -50,17 +50,17 @@ int main () {
         *j = 22;
         std::cout<< i << endl;
 
-		map<int,int> testmap;
-		if(testmap.end() == nullptr){
-			cout<<"nulllllllll"<<endl;
-		}
-		if(testmap.end()->second == NULL){
-			cout<<"1222222222222"<<endl;
-		}
-		else{
-			cout<<"22222"<<endl;
-			cout<<testmap.end()->second<<endl;
-		}
+//		map<int,int> testmap;
+//		if(testmap.end() == nullptr){
+//			cout<<"nulllllllll"<<endl;
+//		}
+//		if(testmap.end()->second == NULL){
+//			cout<<"1222222222222"<<endl;
+//		}
+//		else{
+//			cout<<"22222"<<endl;
+//			cout<<testmap.end()->second<<endl;
+//		}
 
 
 		// create a buffer manager 

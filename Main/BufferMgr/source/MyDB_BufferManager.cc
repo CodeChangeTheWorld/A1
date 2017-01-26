@@ -131,19 +131,25 @@ const MyDB_TablePtr& MyDB_table_page::getTablePtr() const{
 }
 
 shared_ptr<MyDB_Page> MyDB_BufferManager::checklru(long lru){
-    map<long, shared_ptr<MyDB_Page>>::iterator iterator1 = this->lrumap.find(lru);
+    map<long, MyDB_table_page>::iterator iterator1 = this->lrumap.find(lru);
     if(iterator1 == this->lrumap.end()){
         return nullptr;
     }
     else{
-        return iterator1->second;
+        return shared_ptr<MyDB_Page> (&this->tpmap.find(iterator1->second)->second);
     }
 
 }
 
 void MyDB_BufferManager::updateLRU(long lru) {
     // check existence
+    shared_ptr<MyDB_Page> check = this->checklru(lru);
+    if(check == nullptr){
 
+    }
+    else{
+        this->lrumap
+    }
 
 }
 
