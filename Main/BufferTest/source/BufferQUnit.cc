@@ -41,31 +41,6 @@ int main () {
 	// UNIT TEST 1: A BIG ONE!!
 	{
 
-//        int i = 10;
-//        int * j = &i;
-//        std::cout<< *j << endl;
-//        i = 20;
-//        std::cout<< *j << endl;
-//        i = 9;
-//        *j = 22;
-//        std::cout<< i << endl;
-
-//		map<int,int> testmap;
-//		if(testmap.end() == nullptr){
-//			cout<<"nulllllllll"<<endl;
-//		}
-//		if(testmap.end()->second == NULL){
-//			cout<<"1222222222222"<<endl;
-//		}
-//		else{
-//			cout<<"22222"<<endl;
-//			cout<<testmap.end()->second<<endl;
-//		}
-
-		int * p = new int[10];
-		*(p+2) = 1000000;
-		cout<<p[2]<<endl;
-
 
 
 		// create a buffer manager 
@@ -78,6 +53,7 @@ int main () {
 		char *bytes = (char *) pinnedPage->getBytes ();
 		writeNums (bytes, 64, 0);
 		pinnedPage->wroteBytes ();
+
 
 		
 		// create a bunch of pinned pages and remember them

@@ -21,7 +21,7 @@ MyDB_PageHandle MyDB_BufferManager :: getPage (MyDB_TablePtr ptr, long id) {
 
     MyDB_table_page tp1 = MyDB_table_page (ptr, id);
 //    unordered_map<MyDB_table_page, MyDB_Page, MyHash, MyEqualTo>::iterator it = this->tpmap.find(tp1);
-    map<MyDB_table_page, MyDB_Page,MyEqualTo>::iterator it = this->tpmap.find(tp1);
+    map<MyDB_table_page, shared_ptr<MyDB_Page>,MyEqualTo>::iterator it = this->tpmap.find(tp1);
     if(it == this->tpmap.end()){
         std::cout<<"not find"<<endl;
         // not found
@@ -31,13 +31,7 @@ MyDB_PageHandle MyDB_BufferManager :: getPage (MyDB_TablePtr ptr, long id) {
     else{
         // found, just return
         std::cout<<"find it"<<endl;
-        shared_ptr<MyDB_Page> lrupage;
-        MyDB_Page temppg = it->second;
-        lrupage = make_shared<MyDB_Page> (temppg.getBufferManager(),temppg.getTable(),temppg.getPageID());
-        lrupage.get()->setLRU(temppg.getLRU());
-        lrupage.get()->setDirty(temppg.getDirty());
-        lrupage.get()->setOffset(temppg.getOffset());
-        lrupage.get()->setpin(temppg.getpin());
+        shared_ptr<MyDB_Page> lrupage = it->second;
         return make_shared<MyDB_PageHandleBase>(lrupage);
     }
 }
@@ -51,7 +45,7 @@ MyDB_PageHandle MyDB_BufferManager :: getPage () {
 MyDB_PageHandle MyDB_BufferManager :: getPinnedPage (MyDB_TablePtr ptr, long id) {
     MyDB_table_page tp1 = MyDB_table_page (ptr, id);
 //    unordered_map<MyDB_table_page, MyDB_Page, MyHash, MyEqualTo>::iterator it = this->tpmap.find(tp1);
-    map<MyDB_table_page, MyDB_Page,MyEqualTo>::iterator it = this->tpmap.find(tp1);
+    map<MyDB_table_page, shared_ptr<MyDB_Page>,MyEqualTo>::iterator it = this->tpmap.find(tp1);
     if(it == tpmap.end()){
         std::cout<<"not find"<<endl;
         shared_ptr<MyDB_Page> pg = make_shared<MyDB_Page>(this, ptr, id);
@@ -60,13 +54,7 @@ MyDB_PageHandle MyDB_BufferManager :: getPinnedPage (MyDB_TablePtr ptr, long id)
     }
     else{
         std::cout<<"find it"<<endl;
-        shared_ptr<MyDB_Page> lrupage;
-        MyDB_Page temppg = it->second;
-        lrupage = make_shared<MyDB_Page> (temppg.getBufferManager(),temppg.getTable(),temppg.getPageID());
-        lrupage.get()->setLRU(temppg.getLRU());
-        lrupage.get()->setDirty(temppg.getDirty());
-        lrupage.get()->setOffset(temppg.getOffset());
-        lrupage.get()->setpin(temppg.getpin());
+        shared_ptr<MyDB_Page> lrupage = it->second;
         return make_shared<MyDB_PageHandleBase>(lrupage);
     }
 
@@ -100,23 +88,13 @@ MyDB_BufferManager :: MyDB_BufferManager (size_t pgSize, size_t pgNum, string tm
     }
 	else std::cout<<"successful"<<endl;
 
-    // open tmpFile
-    this->tmp = open(this->tempFile.c_str(), O_CREAT | O_RDWR | O_FSYNC, 0666);
-    lseek(tmp, 64, SEEK_SET);
-    ssize_t wt;
-    wt = write(tmp, "123", 20);
-
-//    MyDB_TablePtr table1 = make_shared <MyDB_Table> ("tempTable", "foobar");
-//    MyDB_table_page tp = MyDB_table_page(table1, 0);
-////    MyDB_tpptr ptr1 = make_shared <MyDB_table_page> (table1, 0);
-//    std::pair<MyDB_table_page, MyDB_Page> pair1(tp, MyDB_Page());
-//    this->tpmap.insert(pair1);
 
 
 
 }
 
 MyDB_BufferManager :: ~MyDB_BufferManager () {
+
 }
 
 
@@ -158,10 +136,12 @@ shared_ptr<MyDB_table_page> MyDB_BufferManager::checklru(long lru){
     map<long, MyDB_table_page>::iterator iterator1 = this->lrumap.find(lru);
 
     if(iterator1 == this->lrumap.end()){
+        cout<<"check: not"<<endl;
         return nullptr;
     }
     else{
         shared_ptr<MyDB_table_page> ptr = make_shared<MyDB_table_page>(iterator1->second.gettableptr(), iterator1->second.getpageid());
+        cout<<"check: yes"<<endl;
         return ptr;
     }
 
@@ -174,28 +154,16 @@ void* MyDB_BufferManager::getBytes(shared_ptr<MyDB_Page>  page){
         if(curpage == nullptr){
             //full
             if(numPages <= this->lrumap.size()){
-//            if(1 != 0){
                 shared_ptr<MyDB_Page> lrupage;
-//                int i=0;
-//                do {  lrupage = shared_ptr<MyDB_Page> (&this->tpmap.find(this->lrumap[i])->second);
-//                      i++;
-//                }while(lrupage->getpin()==true && i<lrumap.size());
 
                 for(map<long, MyDB_table_page>::iterator i = this->lrumap.begin(); i != this->lrumap.end(); i++){
-                    if(!this->tpmap.find(i->second)->second.getpin()){
-//                        lrupage = shared_ptr<MyDB_Page> (&this->tpmap.find(i->second)->second);
-                        MyDB_Page temppg = tpmap.find(i->second)->second;
-                        lrupage = make_shared<MyDB_Page> (temppg.getBufferManager(),temppg.getTable(),temppg.getPageID());
-                        lrupage.get()->setLRU(temppg.getLRU());
-                        lrupage.get()->setDirty(temppg.getDirty());
-                        lrupage.get()->setOffset(temppg.getOffset());
-                        lrupage.get()->setpin(temppg.getpin());
+                    if(!this->tpmap.find(i->second)->second.get()->getpin()){
+                        lrupage = tpmap.find(i->second)->second;
                         break;
                     }
                 }
 
                 if(lrupage->getDirty()){
-
                     writeBack(lrupage);
                     lrupage->setDirty(false);
                 }
@@ -212,7 +180,6 @@ void* MyDB_BufferManager::getBytes(shared_ptr<MyDB_Page>  page){
             int bytes_read = read(file,(this->buffer)+page->getOffset(),pageSize);
         }
         this->updateLRU(page);
-//      this->updateLRU(shared_ptr<MyDB_Page>(page.get()));
         return (this->buffer)+page->getOffset();
 }
 
@@ -224,37 +191,32 @@ void MyDB_BufferManager::updateLRU(shared_ptr<MyDB_Page>  pgptr) {
 
     // update lrunum in object
     pgptr.get()->setLRU(this->timestamp);
-//    pgptr->setLRU(this->timestamp);
 
-//    MyDB_table_page nID = MyDB_table_page(pgptr.get()->getTable(), pgptr.get()->getPageID());
     MyDB_table_page nID(pgptr.get()->getTable(), pgptr.get()->getPageID());
-//    MyDB_table_page nID = MyDB_table_page(pgptr->getTable(), pgptr->getPageID());
     std::pair<long, MyDB_table_page> npair1(this->timestamp, nID);
     this->lrumap.insert(npair1);
     cout<<lrumap.size()<<endl;
-//    cin.get();
-//    std::unordered_map<MyDB_table_page, MyDB_Page, MyHash, MyEqualTo>::iterator iterator1;
-      map<MyDB_table_page, MyDB_Page, MyEqualTo>::iterator iterator1;
-//    map<int, int>::iterator i;
-//            iterator1 = this->tpmap.find(nID);
-
+    map<MyDB_table_page, shared_ptr<MyDB_Page>, MyEqualTo>::iterator iterator1;
+    iterator1 = this->tpmap.find(nID);
 
     if(iterator1 != this->tpmap.end()){
         // exist
         // can use a better way
-        cout<<"erasing"<<endl;
-        this->tpmap.erase(nID);
-
+        cout<<"existing in tpmap"<<endl;
+        iterator1->second = pgptr;
+    }
+    else{
+        cout<<"new item in tpmap"<<endl;
+        std::pair<MyDB_table_page, shared_ptr<MyDB_Page>> npair(nID, pgptr);
+        this->tpmap.insert(npair);
     }
 
-    std::pair<MyDB_table_page, MyDB_Page> npair(nID, *pgptr.get());
-    this->tpmap.insert(npair);
+
 
     shared_ptr<MyDB_table_page> check = this->checklru(lrunum);
 
     // lru is full or object is contained in lrumap
     if(check != nullptr){
-//    if(check.get() == NULL){
         // lru is full or map contain
         cout<<"erasing2"<<endl;
         this->lrumap.erase(lrunum);
@@ -269,6 +231,8 @@ void MyDB_BufferManager::writeBack(shared_ptr<MyDB_Page>  p) {
     int file = open(table->getStorageLoc().c_str(), O_CREAT | O_RDWR | O_FSYNC, 0666);
     lseek(file, pageSize*(p->getPageID()), SEEK_SET);
     int write_read = write(file,(this->buffer)+p->getOffset(),pageSize);
+    close(file);
+    cout<<"written back"<<endl;
 }
 #endif
 

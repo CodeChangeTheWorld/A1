@@ -40,7 +40,7 @@ void MyDB_Page::setDirty(bool dirty) {
     this->dirty = dirty;
 }
 MyDB_Page::~MyDB_Page() {
-//    cout<<"page deconsrtructing"<<endl;
+    cout<<"page deconsrtructing"<<endl;
 }
 
 bool MyDB_Page::getpin() {
@@ -62,8 +62,6 @@ long MyDB_Page::getPageID(){
 MyDB_BufferManager* MyDB_Page::getBufferManager() {
     return this->bfmanager;
 }
-//void* getBytes(long lru){
-//
-//}
+
 
 #endif

@@ -18,7 +18,7 @@ void MyDB_PageHandleBase :: wroteBytes () {
 }
 
 MyDB_PageHandleBase :: ~MyDB_PageHandleBase () {
-//    std::cout<<"deconstructing"<<std::endl;
+    std::cout<<"deconstructing"<<std::endl;
 }
 
 void MyDB_PageHandleBase::unpin() {
