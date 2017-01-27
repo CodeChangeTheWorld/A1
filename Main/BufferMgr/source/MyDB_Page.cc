@@ -5,6 +5,7 @@
 #ifndef PAGE_C
 #define PAGE_C
 
+#include <iostream>
 #include "MyDB_Page.h"
 #include "MyDB_BufferManager.h"
 #include "MyDB_Table.h"
@@ -39,6 +40,7 @@ void MyDB_Page::setDirty(bool dirty) {
     this->dirty = dirty;
 }
 MyDB_Page::~MyDB_Page() {
+//    cout<<"page deconsrtructing"<<endl;
 }
 
 bool MyDB_Page::getpin() {

@@ -3,6 +3,7 @@
 #define PAGE_HANDLE_C
 
 #include <memory>
+#include <iostream>
 #include "MyDB_PageHandle.h"
 #include "MyDB_BufferManager.h"
 
@@ -17,6 +18,7 @@ void MyDB_PageHandleBase :: wroteBytes () {
 }
 
 MyDB_PageHandleBase :: ~MyDB_PageHandleBase () {
+//    std::cout<<"deconstructing"<<std::endl;
 }
 
 void MyDB_PageHandleBase::unpin() {

@@ -20,6 +20,8 @@ public:
 
     const long getpgid() const;
 
+    MyDB_TablePtr gettableptr();
+    long getpageid();
 
 private:
 
