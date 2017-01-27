@@ -6,6 +6,8 @@
 #define PAGE_C
 
 #include <iostream>
+#include <fcntl.h>
+#include <zconf.h>
 #include "MyDB_Page.h"
 #include "MyDB_BufferManager.h"
 #include "MyDB_Table.h"

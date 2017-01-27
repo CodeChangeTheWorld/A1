@@ -22,6 +22,7 @@ MyDB_PageHandleBase :: ~MyDB_PageHandleBase () {
 }
 
 void MyDB_PageHandleBase::unpin() {
+    cout<<"unping"<<endl;
 	this->pgobject.get()->setpin(false);
 }
 
