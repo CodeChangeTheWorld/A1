@@ -55,7 +55,7 @@ public:
                + p1.getTablePtr()->getStorageLoc() + "/"
                + to_string(p1.getpgid())).compare(p2.getTablePtr()->getName() + "/"
                                                   + p2.getTablePtr()->getStorageLoc() + "/"
-                                                  + to_string(p2.getpgid()))!=0;
+                                                  + to_string(p2.getpgid()))<0;
     }
 };
 
@@ -111,7 +111,7 @@ public:
 	void* getBytes(shared_ptr<MyDB_Page>  p);
     map <long, MyDB_table_page> lrumap;
 //    unordered_map<MyDB_table_page, MyDB_Page, MyHash, MyEqualTo> tpmap;
-    map<shared_ptr<MyDB_table_page>, shared_ptr<MyDB_Page>, MyEqualTo> tpmap;
+    map<MyDB_table_page, shared_ptr<MyDB_Page>, MyEqualTo> tpmap;
 //    map<shared_ptr<MyDB_table_page>, shared_ptr<MyDB_Page>> tpmap;
 private:
 
