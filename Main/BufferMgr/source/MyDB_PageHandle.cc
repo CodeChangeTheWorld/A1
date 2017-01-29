@@ -12,13 +12,15 @@ void *MyDB_PageHandleBase :: getBytes () {
 }
 
 void MyDB_PageHandleBase :: wroteBytes () {
-    this->pgobject.get()->setDirty(true);
-//    long lru = this->pgobject.get()->getLRU();
-    this->pgobject.get()->getBufferManager()->updateLRU(pgobject);
+//    this->pgobject.get()->setDirty(true);
+////    long lru = this->pgobject.get()->getLRU();
+//    this->pgobject.get()->getBufferManager()->updateLRU(pgobject);
+    this->pgobject->getBufferManager()->wroteBytes(pgobject);
 }
 
 MyDB_PageHandleBase :: ~MyDB_PageHandleBase () {
     std::cout<<"deconstructing"<<std::endl;
+    this->unpin();
 }
 
 void MyDB_PageHandleBase::unpin() {

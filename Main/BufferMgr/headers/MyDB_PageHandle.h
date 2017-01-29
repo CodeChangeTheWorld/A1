@@ -36,7 +36,7 @@ public:
 	// FEEL FREE TO ADD ADDITIONAL PUBLIC METHODS
 
     void unpin();
-	MyDB_PageHandleBase();
+//	MyDB_PageHandleBase();
 	MyDB_PageHandleBase(shared_ptr<MyDB_Page> page);
 
 

@@ -109,6 +109,7 @@ public:
     void writeBack(shared_ptr<MyDB_Page>  p);
     shared_ptr<MyDB_table_page> checklru(long lru);
 	void* getBytes(shared_ptr<MyDB_Page>  p);
+    void wroteBytes(shared_ptr<MyDB_Page> p);
     map <long, MyDB_table_page> lrumap;
 //    unordered_map<MyDB_table_page, MyDB_Page, MyHash, MyEqualTo> tpmap;
     map<MyDB_table_page, shared_ptr<MyDB_Page>, MyEqualTo> tpmap;
@@ -119,7 +120,7 @@ private:
 	int pageSize, numPages;
 	string tempFile;
     char * buffer;
-    int tmp;
+    int tmp = 0;
     long timestamp;
 };
 

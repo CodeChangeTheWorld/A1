@@ -62,7 +62,7 @@ MyDB_PageHandle MyDB_BufferManager :: getPinnedPage (MyDB_TablePtr ptr, long id)
 
 MyDB_PageHandle MyDB_BufferManager :: getPinnedPage () {
     MyDB_TablePtr tppointer = make_shared<MyDB_Table>(this->tempFile,this->tempFile);
-    shared_ptr<MyDB_Page> pg = make_shared<MyDB_Page>(this, tppointer, 0);
+    shared_ptr<MyDB_Page> pg = make_shared<MyDB_Page>(this, tppointer, this->tmp++);
     pg.get()->setpin(true);
     return make_shared<MyDB_PageHandleBase>(pg);
 }
@@ -220,10 +220,40 @@ void MyDB_BufferManager::updateLRU(shared_ptr<MyDB_Page>  pgptr) {
         // lru is full or map contain
         cout<<"erasing2"<<endl;
         this->lrumap.erase(lrunum);
+        cout<<this->lrumap.size()<<endl;
     }
 
 }
 
+void MyDB_BufferManager::wroteBytes(shared_ptr<MyDB_Page> page) {
+    shared_ptr<MyDB_table_page> curpage = this->checklru(page.get()->getLRU());
+    if(curpage == nullptr){
+        //full
+        if(numPages <= this->lrumap.size()){
+            shared_ptr<MyDB_Page> lrupage;
+
+            for(map<long, MyDB_table_page>::iterator i = this->lrumap.begin(); i != this->lrumap.end(); i++){
+                if(!this->tpmap.find(i->second)->second.get()->getpin()){
+                    lrupage = tpmap.find(i->second)->second;
+                    break;
+                }
+            }
+
+            if(lrupage->getDirty()){
+                writeBack(lrupage);
+                lrupage->setDirty(false);
+            }
+            long curoffset = lrupage->getOffset();
+            long oldlrunum = lrupage->getLRU();
+            page->setLRU(oldlrunum);
+            page->setOffset(curoffset);
+            page->setDirty(true);
+        }
+
+    }
+    this->updateLRU(page);
+
+}
 
 void MyDB_BufferManager::writeBack(shared_ptr<MyDB_Page>  p) {
     cout<<"writing back"<<endl;
