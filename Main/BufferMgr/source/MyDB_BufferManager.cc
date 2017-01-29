@@ -172,6 +172,9 @@ void* MyDB_BufferManager::getBytes(shared_ptr<MyDB_Page>  page){
                 page->setLRU(oldlrunum);
                 page->setOffset(curoffset);
             }
+            else{
+                page->setOffset(this->pageSize * this->lrumap.size());
+            }
 
             MyDB_TablePtr table = page->getTable();
             // open tmpFile
