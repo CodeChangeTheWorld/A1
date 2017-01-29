@@ -22,7 +22,6 @@ class MyDB_Page{
 
 public:
 
-    MyDB_Page();
     MyDB_Page(MyDB_BufferManager* bfmanager, MyDB_TablePtr ptr, long id);
     long getLRU();
     void setLRU(long lru);

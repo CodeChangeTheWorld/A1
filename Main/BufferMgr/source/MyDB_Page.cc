@@ -6,14 +6,9 @@
 #define PAGE_C
 
 #include <iostream>
-#include <fcntl.h>
-#include <zconf.h>
 #include "MyDB_Page.h"
 #include "MyDB_BufferManager.h"
-#include "MyDB_Table.h"
-MyDB_Page::MyDB_Page() {
 
-}
 MyDB_Page::MyDB_Page(MyDB_BufferManager* manager, MyDB_TablePtr ptr,long id){
     this->bfmanager= manager;
     this->tableptr = ptr;
@@ -42,7 +37,6 @@ void MyDB_Page::setDirty(bool dirty) {
     this->dirty = dirty;
 }
 MyDB_Page::~MyDB_Page() {
-    cout<<"page deconsrtructing"<<endl;
 }
 
 bool MyDB_Page::getpin() {
